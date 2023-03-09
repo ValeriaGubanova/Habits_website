@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  posfix:
+    name: 'rabit-postfix'
+    image: boky/postfix
+    
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "habrdb"
+      POSTGRES_USER: "habrpguser"
+      POSTGRES_PASSWORD: "pgpwd4habr"
+    ports:
+      - "5432:5432"
+    volume:
+      - /home/valeria/projects/databases/habits:/var/lib/postgresql/data
+  
+  rabbit:
+  
+  
