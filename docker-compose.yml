@@ -1,5 +1,6 @@
-version: "3.9"
+version: "2.15.1"
 services:
+
   posfix:
     name: 'rabit-postfix'
     image: boky/postfix
@@ -16,5 +17,12 @@ services:
       - /home/valeria/projects/databases/habits:/var/lib/postgresql/data
   
   rabbit:
-  
+    image: rabbitmq:3.10.7-management
+      hostname: rabbitmq
+      restart: always
+      environment:
+        - RABBITMQ_DEFAULT_USER: "rabbUser"
+        - RABBITMQ_DEFAULT_PASS: "rabbPassword"
+      ports:
+        - "15672:15672"
   
