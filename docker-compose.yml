@@ -1,7 +1,8 @@
-version: "3.9"
+version: "2.15.1"
 services:
-  posfix:
-    name: 'rabit-postfix'
+
+  postfix:
+#    name: 'rabit-postfix'
     image: boky/postfix
     
   postgres:
@@ -11,10 +12,17 @@ services:
       POSTGRES_USER: "habrpguser"
       POSTGRES_PASSWORD: "pgpwd4habr"
     ports:
-      - "5432:5432"
-    volume:
-      - /home/valeria/projects/databases/habits:/var/lib/postgresql/data
-  
-  rabbit:
-  
-  
+      - "5431:5432"
+#    volume:
+#      - "C:\\habbits_data:/var/lib/postgresql/data"
+
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    hostname: "rabbitmq"
+    restart: "always"
+    environment:
+       RABBITMQ_DEFAULT_USER: "rmuser"
+       RABBITMQ_DEFAULT_PASS: "rmpassword"
+    ports:
+      - "15672:15672"
+
