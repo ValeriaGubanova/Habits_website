@@ -2,8 +2,16 @@ version: "2.15.1"
 services:
 
   postfix:
-#    name: 'rabit-postfix'
-    image: boky/postfix
+    container_name: "mail-postfix"
+    image: catatnight/postfix
+    restart: "always"
+    expose:
+      - "25"
+    environment:
+      maildomain: "wpdiaries.com" # replace with your own server name instead of example.com
+      smtp_user: "admin:pwd" # username and password for SMTP
+ #   volumes:
+ #     - "/opt/projects/mail/volumes/domainkeys:/etc/opendkim/domainkeys"
     
   postgres:
     image: postgres:13.3
@@ -13,8 +21,8 @@ services:
       POSTGRES_PASSWORD: "pgpwd4habr"
     ports:
       - "5431:5432"
-#    volume:
-#      - "C:\\habbits_data:/var/lib/postgresql/data"
+ #   volume:
+  #   - "C:\\habbits_data:/var/lib/postgresql/data"
 
   rabbitmq:
     image: rabbitmq:3.10.7-management
