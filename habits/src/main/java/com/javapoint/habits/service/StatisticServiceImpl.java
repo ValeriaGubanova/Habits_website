@@ -2,16 +2,16 @@ package com.javapoint.habits.service;
 
 
 import com.javapoint.habits.model.Statistic;
-import com.javapoint.habits.repository.StatisticRepo;
+import com.javapoint.habits.repository.StatisticRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class StatisticServiceImpl implements StatisticService{
-    private StatisticRepo repository;
+    private StatisticRepository repository;
 
-    public StatisticServiceImpl(StatisticRepo repository) {
+    public StatisticServiceImpl(StatisticRepository repository) {
         this.repository = repository;
     }
 
