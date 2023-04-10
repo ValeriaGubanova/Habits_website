@@ -33,6 +33,8 @@ public interface ClientService {
      */
     //boolean update(Client client, int user_id);
 
+    boolean update(Client client, int id);
+
     /**
      * Удаляет клиента с заданным ID
      * @param user_id - id клиента, которого нужно удалить

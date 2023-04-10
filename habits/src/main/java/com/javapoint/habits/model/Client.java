@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Client {
 
     @Id
-    @Column(name = "id_", nullable = false, unique=true)
+    @Column(name = "id", nullable = false, unique=true)
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
@@ -30,7 +31,7 @@ public class Client {
     @Column(name="enabled")
     private boolean active;
 
-   /* public Set<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
@@ -38,14 +39,17 @@ public class Client {
         this.roles = roles;
     }
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "username"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
     public void setRole(Set<Role> roles) {
         this.roles = roles;
-    }*/
+    }
 
     public Integer getId() {
         return id;

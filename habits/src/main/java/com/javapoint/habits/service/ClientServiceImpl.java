@@ -1,16 +1,16 @@
 package com.javapoint.habits.service;
 
 import com.javapoint.habits.model.Client;
-import com.javapoint.habits.repository.RepoClient;
+import com.javapoint.habits.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class ClientServiceImpl implements ClientService {
 
-    private RepoClient repository;
+    private ClientRepository repository;
 
-    public ClientServiceImpl(RepoClient repository) {
+    public ClientServiceImpl(ClientRepository repository) {
         this.repository = repository;
     }
 
@@ -21,7 +21,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public List<Client> readAll() {
-        return repository.findAll();
+        return (List<Client>) repository.findAll();
     }
 
     @Override
@@ -29,16 +29,16 @@ public class ClientServiceImpl implements ClientService {
         return repository.findById( id ).orElseGet( null );
     }
 
-   /* @Override
+    @Override
     public boolean update(Client client, int id) {
         if (repository.existsById(id)) {
-            client.setUser_id(id);
+            client.setId(id);
             repository.save(client);
             return true;
         }
 
         return false;
-    }*/
+    }
 
     @Override
     public boolean delete(int id) {
