@@ -1,9 +1,10 @@
-package org.EmailSender;
+/*package org.EmailSender;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class EmailSenderService {
@@ -11,7 +12,7 @@ public class EmailSenderService {
     @Autowired
     private JavaMailSender emailSender;
 
-    public void sendSimpleMessage(Mail mail){
+    public void publishMessage(Mail mail){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setSubject(mail.getSubject());
         message.setText(mail.getContent());
@@ -20,4 +21,4 @@ public class EmailSenderService {
 
         emailSender.send(message);
     }
-}
+}*/
