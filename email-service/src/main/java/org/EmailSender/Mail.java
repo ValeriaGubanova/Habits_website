@@ -6,18 +6,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
+/*@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString*/
 public class Mail {
+    /*
+        private String messageId;
+        private String message;
+        private Date messageDate;
 
-    private String messageId;
-    private String message;
-    private Date messageDate;
-
-}
-    /*private String from;
+    }*/
+    private String from;
     private String to;
     private String subject;
     private String content;
@@ -66,10 +66,11 @@ public class Mail {
 
     @Override
     public String toString() {
-        return "Mail{" +
-                "from='" + from + '\'' +
-                ", to='" + to + '\'' +
-                ", subject='" + subject + '\'' +
-                ", content='" + content + '\'' +
+        return "Mail {" +
+                "from '" + from + '\'' +
+                ", to '" + to + '\'' +
+                ", subject '" + subject + '\'' +
+                ", content '" + content + '\'' +
                 '}';
-    }*/
+    }
+}
