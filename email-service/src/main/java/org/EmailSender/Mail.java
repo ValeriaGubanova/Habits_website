@@ -1,6 +1,22 @@
 package org.EmailSender;
 
+import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+/*@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString*/
 public class Mail {
+    /*
+        private String messageId;
+        private String message;
+        private Date messageDate;
+
+    }*/
     private String from;
     private String to;
     private String subject;
@@ -50,11 +66,11 @@ public class Mail {
 
     @Override
     public String toString() {
-        return "Mail{" +
-                "from='" + from + '\'' +
-                ", to='" + to + '\'' +
-                ", subject='" + subject + '\'' +
-                ", content='" + content + '\'' +
+        return "Mail {" +
+                "from '" + from + '\'' +
+                ", to '" + to + '\'' +
+                ", subject '" + subject + '\'' +
+                ", content '" + content + '\'' +
                 '}';
     }
 }
