@@ -1,76 +1,43 @@
 package org.EmailSender;
 
-import java.util.Date;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-/*@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString*/
 public class Mail {
-    /*
-        private String messageId;
-        private String message;
-        private Date messageDate;
-
-    }*/
-    private String from;
-    private String to;
-    private String subject;
-    private String content;
+    private String username;
+    private String habit_desc;
+    private String email;
 
     public Mail() {
     }
 
-    public Mail(String from, String to, String subject, String content) {
-        this.from = from;
-        this.to = to;
-        this.subject = subject;
-        this.content = content;
+    public Mail(String username, String habit_desc, String email) {
+        this.username = username;
+        this.habit_desc = habit_desc;
+        this.email = email;
     }
 
-    public String getFrom() {
-        return from;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getTo() {
-        return to;
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getHabit_desc() {
+        return habit_desc;
     }
 
-    public void setTo(String to) {
-        this.to = to;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setHabit_desc(String habit_desc) {
+        this.habit_desc = habit_desc;
     }
 
     @Override
     public String toString() {
         return "Mail {" +
-                "from '" + from + '\'' +
-                ", to '" + to + '\'' +
-                ", subject '" + subject + '\'' +
-                ", content '" + content + '\'' +
+                ", to '" + username + '\'' +
+                ", content '" + habit_desc + '\'' +
                 '}';
     }
 }
