@@ -10,7 +10,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="habits" target="19" />
+      <module name="Habb" target="19" />
+      <module name="habits" target="18" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

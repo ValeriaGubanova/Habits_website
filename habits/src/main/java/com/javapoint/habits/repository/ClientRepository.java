@@ -12,4 +12,6 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
 
     //@Query("SELECT username FROM users WHERE username = username")
     public Client getUserByUsername(@Param("username") String username);
+
+    public Client getById(@Param("id") int id);
 }
