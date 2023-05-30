@@ -14,7 +14,7 @@ import jakarta.persistence.*;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer uId;
 
-        private String habitDesc;
+        private static String habitDesc;
 
         private String habitColor;
         public Integer getHId() {
@@ -32,7 +32,7 @@ import jakarta.persistence.*;
             this.uId = id;
         }
 
-        public String getDesc() { return habitDesc;
+        public static String getDesc() { return habitDesc;
         }
 
         public void setDesc(String habitDesc) { this.habitDesc = habitDesc;

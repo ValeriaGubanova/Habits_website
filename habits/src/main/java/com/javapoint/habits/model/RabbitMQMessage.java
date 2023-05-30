@@ -2,6 +2,9 @@ package com.javapoint.habits.model;
 
 
 public class RabbitMQMessage {
+    private String routingKey;
+    private String queue;
+
     private String habbitId;
     private String habbitDescription;
     private String userName;

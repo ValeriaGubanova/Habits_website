@@ -34,7 +34,7 @@ public class NotifyService {
             RabbitMQMessage message = new RabbitMQMessage();
             message.setUserName(client.getUsername());
             message.setUserEmail(client.getEmail());
-            message.setHabbitDescription(habits.get());
+            message.setHabbitDescription(Habits.getDesc());
             this.mqRepository.send(message);
         }
 
