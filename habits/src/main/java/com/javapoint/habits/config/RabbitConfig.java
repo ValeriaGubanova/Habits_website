@@ -16,7 +16,10 @@ public class RabbitConfig {
     }
     @Bean
     public RabbitTemplate rabbitTemplate() {
-        return new RabbitTemplate(connectionFactory());
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
+        rabbitTemplate.setExchange("habits.Topic");
+        rabbitTemplate.setRoutingKey("habit-alert");
+        return rabbitTemplate;
     }
     @Bean
     public AmqpAdmin amqpAdmin() {
