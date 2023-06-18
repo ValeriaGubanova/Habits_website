@@ -1,36 +1,38 @@
 package com.javapoint.habits.repository;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
+import com.javapoint.habits.model.Habits;
+import com.javapoint.habits.model.RabbitMQMessage;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class RabbitRepository {
 
-    @Value("${rabbitmq.routingkey}")
+    /*@Value("${rabbitmq.routingkey}")
     private String routingkey;
 
     @Value("${rabbitmq.queue}")
-    private String queue;
+    private String queue;*/
 
-    @Bean
-    Queue queue() {
-        return new Queue(queue, false);
+//Exchange
+
+    private final ClientRepository clientRepository;
+    private final HabitsRepository habitsRepository;
+    private final RabbitTemplate rabbitTemplate;
+
+    public RabbitRepository(ClientRepository clientRepository, HabitsRepository habitsRepository, RabbitTemplate rabbitTemplate) {
+        this.clientRepository = clientRepository;
+        this.habitsRepository = habitsRepository;
+        this.rabbitTemplate = rabbitTemplate;
     }
-
-    @Bean
-    TopicExchange exchange() {
-        return new TopicExchange("spring-boot-exchange");
+    //@Override
+    public void send(RabbitMQMessage message) {
+        List<Habits> habits = (List<Habits>) this.habitsRepository.findAll();
+        for (Habits habit : habits) {
+            String messageBody = "Hi " + clientRepository.getById(habit.getUId()) + ", it is time to work on your habits: " + habit.getDesc();
+            rabbitTemplate.convertAndSend(messageBody);
+        }
     }
-
-    @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
-    }
-
-
 }

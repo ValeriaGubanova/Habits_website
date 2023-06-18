@@ -1,18 +1,48 @@
 package com.javapoint.habits.model;
 
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+    @Entity
+    @Table(name = "habits")
+    public class Habits {
+        @Id
+        @Column(name = "habit_id")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer hId;
 
-@Getter
-@Setter
-@Table(schema = "public", name = "habit_data")
-public class Habits {
+        @Id
+        @Column(name = "User_id")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer uId;
 
-    public Integer habit_id;
-    public Integer User_id;
-    public String habit_desc;
-    public String habit_color;
+        private static String habitDesc;
 
+        private String habitColor;
+        public Integer getHId() {
+            return hId;
+        }
+        public Integer getUId() {
+            return uId;
+        }
 
-}
+        public void setHId(Integer id) {
+            this.hId = id;
+        }
+
+        public void setUId(Integer id) {
+            this.uId = id;
+        }
+
+        public static String getDesc() { return habitDesc;
+        }
+
+        public void setDesc(String habitDesc) { this.habitDesc = habitDesc;
+        }
+
+        public String getColor() { return habitColor;
+        }
+
+        public void setColor(String habitColor) {
+            this.habitColor = habitColor;
+        }
+    }
+
